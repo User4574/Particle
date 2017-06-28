@@ -30,7 +30,23 @@ function Particle(x, y, m, c) {
     point(this.pos.x, this.pos.y);
   }
 
-  this.gone = function() {
-    return this.pos.y >= hei;
+  this.reflect = function(surface_vector, elastic_coeff) {
+    var normal = surface_vector
+                  .copy()
+                  .normalize()
+                  .rotate(PI/2);
+    this.vel = this.vel.sub(p5.Vector.mult(normal, 2 * this.vel.dot(normal))).mult(elastic_coeff);
+  }
+
+  this.online = function(x1, y1, x2, y2) {
+    var dist = function(x1, y1, x2, y2) {
+      return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+    };
+
+    return Math.abs(
+        dist(x1, y1, this.pos.x, this.pos.y) +
+        dist(this.pos.x, this.pos.y, x2, y2) -
+        dist(x1, y1, x2, y2)
+      ) < 1;
   }
 }
