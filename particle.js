@@ -9,6 +9,12 @@ function Particle(x, y, m, c) {
     this.acc.add(p5.Vector.div(force, this.mass));
   }
 
+  this.applyDrag = function(drag_coeff) {
+    var rev_vel = createVector().sub(this.vel);
+    var drag = rev_vel.mult(drag_coeff);
+    this.applyForce(drag);
+  }
+
   this.update = function() {
     this.vel.add(this.acc);
     this.pos.add(this.vel);

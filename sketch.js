@@ -1,5 +1,6 @@
 var ps = [];
 var gravity;
+var air_resistance = 0.5;
 var wid = 800;
 var hei = 600;
 
@@ -14,6 +15,7 @@ function draw() {
 
   for(var i = ps.length - 1; i >= 0; i--) {
     ps[i].applyForce(gravity);
+    ps[i].applyDrag(air_resistance);
     ps[i].update();
 
     stroke(ps[i].colour);
@@ -30,7 +32,7 @@ function draw() {
           mouseX, mouseY, random(2, 8),
           color(random(0, 360), random(90, 100), random(50, 100))
         );
-    p.applyForce(createVector(random(-40, 40), random(-150, 0)));
+    p.applyForce(createVector(random(-200, 200), random(-400, 0)));
     ps.push(p);
   }
 }
