@@ -49,4 +49,12 @@ function Particle(x, y, m, c) {
         dist(x1, y1, x2, y2)
       ) < 2;
   }
+
+  this.collide = function(otherp) {
+    var dist = function(x1, y1, x2, y2) {
+      return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+    };
+
+    return dist(this.pos.x, this.pos.y, otherp.pos.x, otherp.pos.y) < this.mass + otherp.mass;
+  }
 }

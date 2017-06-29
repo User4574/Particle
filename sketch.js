@@ -32,6 +32,11 @@ function draw() {
       ps[i].reflect(createVector(0.25*wid, -0.25*hei), 5);
     }
 
+    for(var j = ps.length - 1; j >= 0; j--) {
+      if(i != j && ps[i].collide(ps[j]))
+        console.log("COLLIDE" + ps[i] + ps[j]);
+    }
+
     if (ps[i].pos.y >= hei)
       ps.splice(i, 1);
   }
