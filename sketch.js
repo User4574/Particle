@@ -13,11 +13,6 @@ function setup() {
 function draw() {
   background(0);
 
-  stroke(255);
-  strokeWeight(4);
-  line(0, 0.75*hei, 0.25*wid, hei);
-  line(0.75*wid, hei, wid, 0.75*hei);
-
   for(var i = ps.length - 1; i >= 0; i--) {
     ps[i].applyForce(gravity);
     ps[i].applyDrag(air_resistance);
@@ -47,4 +42,9 @@ function draw() {
     p.applyForce(force);
     ps.push(p);
   }
+
+  strokeWeight(0);
+  fill(50);
+  triangle(0, 0.75*hei, 0.25*wid, hei, 0, hei);
+  triangle(0.75*wid, hei, wid, 0.75*hei, wid, hei);
 }
