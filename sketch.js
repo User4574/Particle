@@ -13,6 +13,10 @@ function setup() {
 function draw() {
   background(0);
 
+  stroke(0);
+  fill(100);
+  text("frames=" + round(frameRate()) + " particles=" + ps.length, 10, 20);
+
   for(var i = ps.length - 1; i >= 0; i--) {
     ps[i].applyForce(gravity);
     ps[i].applyDrag(air_resistance);
