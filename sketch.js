@@ -1,6 +1,6 @@
 var ps = [];
 var gravity;
-var air_resistance = 0.5;
+var air_resistance = 0.4;
 var wid = 800;
 var hei = 600;
 
@@ -38,11 +38,13 @@ function draw() {
   }
 
   if (mouseIsPressed) {
+    var force = p5.Vector.fromAngle(random(PI, 2*PI));
+    force.mult(random(250));
     var p = new Particle(
           mouseX, mouseY, random(2, 10),
-          color(random(0, 360), random(90, 100), random(50, 100))
+          color(random(360), random(90, 100), random(50, 100))
         );
-    p.applyForce(createVector(random(-250, 250), random(-500, 0)));
+    p.applyForce(force);
     ps.push(p);
   }
 }

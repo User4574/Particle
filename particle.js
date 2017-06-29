@@ -47,6 +47,6 @@ function Particle(x, y, m, c) {
         dist(x1, y1, this.pos.x, this.pos.y) +
         dist(this.pos.x, this.pos.y, x2, y2) -
         dist(x1, y1, x2, y2)
-      ) < 1;
+      ) < 2;
   }
 }
